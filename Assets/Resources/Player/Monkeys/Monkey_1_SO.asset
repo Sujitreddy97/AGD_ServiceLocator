@@ -18,5 +18,5 @@ MonoBehaviour:
   projectileType: 0
   Range: 3
   Cost: 50
-  AttackableBloons: 0000000001000000
+  AttackableBloons: 000000000100000002000000
   AttackRate: 0.5
