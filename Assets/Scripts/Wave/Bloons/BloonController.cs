@@ -20,6 +20,7 @@ namespace ServiceLocator.Wave.Bloon
         private PlayerService playerService;
         private WaveService waveService;
         private SoundService soundService;
+        private GameService gameService;
 
         public Vector3 Position => bloonView.transform.position;
 
@@ -27,8 +28,10 @@ namespace ServiceLocator.Wave.Bloon
             Transform bloonContainer,
             PlayerService playerService,
             WaveService waveService,
-            SoundService soundService)
+            SoundService soundService,
+            GameService gameService)
         {
+            this.gameService = gameService;
             this.playerService = playerService;
             this.waveService = waveService;
             this.soundService = soundService;
@@ -123,10 +126,18 @@ namespace ServiceLocator.Wave.Bloon
 
         private bool HasLayeredBloons() => bloonScriptableObject.LayeredBloons.Count > 0;
 
-        private void SpawnLayeredBloons() => waveService.SpawnBloons(bloonScriptableObject.LayeredBloons,
+        /*private void SpawnLayeredBloons() => waveService.SpawnBloons(bloonScriptableObject.LayeredBloons,
                                                                                           bloonView.transform.position,
                                                                                           currentWaypointIndex,
-                                                                                          bloonScriptableObject.LayerBloonSpawnRate);
+                                                                                          bloonScriptableObject.LayerBloonSpawnRate);*/
+
+        private void SpawnLayeredBloons()
+        {
+            gameService.StartCoroutine(waveService.SpawnBloons(bloonScriptableObject.LayeredBloons,
+                                                               bloonView.transform.position,
+                                                               currentWaypointIndex,
+                                                               bloonScriptableObject.LayerBloonSpawnRate));
+        }
 
         public BloonType GetBloonType() => bloonScriptableObject.Type;
 

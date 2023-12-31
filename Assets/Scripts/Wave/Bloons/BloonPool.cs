@@ -4,6 +4,7 @@ using ServiceLocator.Utilities;
 using ServiceLocator.Wave;
 using ServiceLocator.Sound;
 using ServiceLocator.Player;
+using ServiceLocator.Main;
 
 /*  This script demonstrates the implementation of Object Pool design pattern.
  *  If you're interested in learning about Object Pooling, you can find
@@ -21,12 +22,15 @@ namespace ServiceLocator.Wave.Bloon
         private PlayerService playerService;
         private SoundService soundService;
         private WaveService waveService;
+        private GameService gameService;
 
         public BloonPool(WaveScriptableObject waveScriptableObject,
             PlayerService playerService, 
             SoundService soundService, 
-            WaveService waveService)
+            WaveService waveService,
+            GameService gameService)
         {
+            this.gameService = gameService;
             this.playerService = playerService;
             this.soundService = soundService;
             this.waveService = waveService;
@@ -43,6 +47,6 @@ namespace ServiceLocator.Wave.Bloon
             return bloon;
         }
 
-        protected override BloonController CreateItem() => new BloonController(bloonPrefab, bloonContainer, playerService, waveService, soundService);
+        protected override BloonController CreateItem() => new BloonController(bloonPrefab, bloonContainer, playerService, waveService, soundService, gameService);
     }
 }

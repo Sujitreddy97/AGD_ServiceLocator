@@ -3,7 +3,14 @@ guid: 8b0948addf429374c8df97b23b26b237
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - uiService: {instanceID: 0}
+  - mapScriptableObject: {fileID: 11400000, guid: 412d441209954ab47a08973a630f316a, type: 2}
+  - waveScriptableObject: {fileID: 11400000, guid: 1a1805a3a12f21d4c9847d85958ab9ce, type: 2}
+  - soundScriptableObject: {instanceID: 0}
+  - playerScriptableObject: {instanceID: 0}
+  - SFXSource: {instanceID: 0}
+  - BGSource: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
